@@ -1,0 +1,386 @@
+/* ==========================================
+   A ÚLTIMA ESTAÇÃO - estilos de todas as páginas
+   ========================================== */
+
+/* ---------- 1. Cores ---------- */
+:root {
+  --escura: #5c3a1a;
+  --madeira: #8b5a2b;
+  --creme: #f5e6b8;
+  --texto: #3b2410;
+  --verde: #4f8a3a;
+  --verde-escuro: #2f5d24;
+  --dourado: #e8b830;
+}
+
+/* Páginas da cidade: tudo em tons de cinza */
+.cidade {
+  --escura: #2e2e2e;
+  --madeira: #5f5f5f;
+  --creme: #d9d9d9;
+  --texto: #222;
+  --verde: #6b6b6b;
+  --verde-escuro: #3a3a3a;
+  --dourado: #a8a8a8;
+}
+
+/* ---------- 2. Base ---------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  font-family: "Press Start 2P", "Courier New", monospace;
+  line-height: 1.8;
+  color: var(--texto);
+}
+
+/* Fundo de cada estação */
+.cidade    { background: #8c8c8c; }
+.primavera { background: #9bd16b; }
+.verao     { background: #f2d96b; }
+.outono    { background: #d98a3d; }
+.inverno   { background: #b9d6ea; }
+
+/* Imagem de fundo (atrás de tudo) */
+.fundo {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  image-rendering: pixelated;
+}
+
+.fundo-cidade   { background-image: url("img/cidade.png"); }
+.fundo-corredor { background-image: url("img/corredor.png"); }
+
+/* ---------- 3. Caixa de madeira e textos ---------- */
+.caixa {
+  width: 100%;
+  max-width: 640px;
+  padding: 16px;
+  background: var(--creme);
+  border: 6px solid var(--madeira);
+  outline: 4px solid var(--escura);
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.35);
+  text-align: center;
+  animation: aparecer 0.6s ease-out;
+}
+
+h1 {
+  margin: 0 0 16px;
+  font-size: 18px;
+  line-height: 1.4;
+  text-shadow: 3px 3px 0 var(--dourado);
+}
+
+h2 {
+  margin: 20px 0 10px;
+  font-size: 13px;
+  text-align: left;
+}
+
+p {
+  margin: 0 0 14px;
+  font-size: 13px;
+}
+
+blockquote {
+  margin: 0 0 14px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.45);
+  border: 4px solid var(--escura);
+  font-size: 13px;
+}
+
+.resumo {
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.07);
+  border-left: 6px solid var(--madeira);
+}
+
+.resultado {
+  font-size: 15px;
+  text-shadow: 2px 2px 0 var(--dourado);
+}
+
+.logo {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  margin: 0 auto;
+  image-rendering: pixelated;
+}
+
+/* ---------- 4. Menu do topo ---------- */
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.menu a {
+  padding: 6px 8px;
+  font-size: 10px;
+  color: var(--texto);
+  text-decoration: none;
+  background: rgba(0, 0, 0, 0.08);
+  border: 3px solid var(--madeira);
+  transition: background 0.15s;
+}
+
+.menu a:hover {
+  background: var(--dourado);
+}
+
+/* ---------- 5. Imagem ao lado do texto ---------- */
+.duas-colunas {
+  display: flex;
+  flex-direction: column;       /* celular: imagem em cima, texto embaixo */
+  gap: 16px;
+  text-align: left;
+}
+
+.imagem-cena {
+  border: 4px solid var(--escura);
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
+  line-height: 0;
+}
+
+.imagem-cena img,
+.imagem-bilhete img {
+  display: block;
+  width: 100%;
+  image-rendering: pixelated;
+}
+
+.imagem-bilhete {
+  max-width: 220px;
+  margin: 0 auto;
+  animation: flutuar 3s ease-in-out infinite;
+}
+
+/* ---------- 6. Tabela de inventário ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+th,
+td {
+  padding: 8px;
+  border: 3px solid var(--madeira);
+}
+
+th {
+  background: var(--madeira);
+  color: #fff;
+}
+
+td:last-child {
+  text-align: center;
+}
+
+/* Moeda pulsando ao lado do dinheiro */
+.moeda::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 8px;
+  background: var(--dourado);
+  border: 2px solid var(--escura);
+  animation: brilhar 1.6s ease-in-out infinite;
+}
+
+/* ---------- 7. Listas e botões ---------- */
+.lista-opcoes {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+h2 + .lista-opcoes {
+  margin-top: 0;
+}
+
+.lista-texto {
+  margin: 0 0 14px;
+  padding-left: 20px;
+  font-size: 13px;
+  text-align: left;
+}
+
+.lista-texto li {
+  margin-bottom: 8px;
+}
+
+.botao {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 14px 10px;
+  background: var(--verde);
+  color: #fff;
+  font-size: 13px;
+  text-align: center;
+  text-decoration: none;
+  border: 4px solid var(--verde-escuro);
+  box-shadow: 4px 4px 0 var(--escura);
+  transition: transform 0.15s, box-shadow 0.15s, filter 0.15s;
+}
+
+.botao:hover,
+.botao:focus-visible {
+  filter: brightness(1.2);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--escura);
+}
+
+.botao:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--escura);
+}
+
+.botao-secundario {
+  background: var(--madeira);
+  border-color: var(--escura);
+}
+
+.botao-dinheiro {
+  background: #a67c12;
+  border-color: #6e5008;
+}
+
+
+.botao-aparece {
+  animation: surgir 0.5s ease-out 3s both;
+}
+
+/* ---------- 8. Cena da porta e da carta ---------- */
+.cena {
+  position: relative;
+  height: 400px;
+  margin-bottom: 16px;
+  overflow: hidden;
+  background: #b5b5b5;
+  border: 4px solid var(--escura);
+}
+
+.chao {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: #8a8a8a;
+  border-top: 6px solid var(--escura);
+}
+
+.porta {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 2;                    /* a porta fica NA FRENTE da carta */
+  width: 180px;
+  height: 300px;
+  margin-left: -90px;
+  border: 6px solid var(--escura);
+  border-bottom: none;
+}
+
+.carta {
+  position: absolute;
+  top: 230px;                    /* começa escondida atrás da porta */
+  left: 50%;
+  z-index: 1;
+  width: 110px;
+  height: 77px;
+  margin-left: -55px;
+  animation: deslizar 2.5s ease-out 0.8s both;
+}
+
+.porta img,
+.carta img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: pixelated;
+}
+
+/* ---------- 9. Animações ---------- */
+@keyframes aparecer {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes surgir {
+  from { opacity: 0; visibility: hidden; transform: translateY(10px); }
+  to   { opacity: 1; visibility: visible; transform: translateY(0); }
+}
+
+@keyframes deslizar {
+  from { transform: translateY(0) rotate(0); }
+  to   { transform: translateY(80px) rotate(-4deg); }
+}
+
+@keyframes flutuar {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+@keyframes brilhar {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.35); }
+}
+
+
+/* ---------- 10. Telas grandes ---------- */
+@media (min-width: 600px) {
+  body {
+    padding: 24px;
+  }
+
+  .caixa {
+    padding: 24px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  .duas-colunas {
+    flex-direction: row;         
+    align-items: center;
+  }
+
+  .duas-colunas > * {
+    flex: 1;
+  }
+
+  .lista-opcoes {
+    flex-direction: row;
+  }
+
+  .lista-opcoes li {
+    flex: 1;
+  }
+}
